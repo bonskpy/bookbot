@@ -22,15 +22,17 @@ def character_count(text:str):
             print("something funky is going on here")
     return character_counter
 
-def sort_characters(character_dictionary:dict) -> list[dict]:
+def sort_characters(char_count_dict:dict) -> list[dict]:
+    """function takes a dictionary and returns a sorted list of dictionaries"""
+    char_count_list = []
+    
+    for key, value in char_count_dict.items():
+        char_count_list.append({key:value})
 
-    def extract_value(key_value_pair: tuple):
-        return key_value_pair[1]
- 
-    items_char_dict = character_dictionary.items()
+    def value_getter(item: dict):
+        return list(item.values())[0]
 
-    sorted_char_dict = sorted(items_char_dict, key=extract_value, reverse=True)
-    print(sorted_char_dict)
+    char_count_list.sort(key=value_getter, reverse=True)
 
-
+    return char_count_list
     
